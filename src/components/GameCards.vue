@@ -1,9 +1,10 @@
 <script>
 import Card from "./Card.vue";
+import DefaultCard from "./DefaultCard.vue"
 
 export default {
   name: 'GameCards',
-  components: {Card}
+  components: {Card, DefaultCard}
 }
 </script>
 
@@ -17,7 +18,9 @@ export default {
         <div class="container">
           <Card v-for="card in 5"></Card>
         </div>
-        <div class="container"></div>
+        <div class="container">
+          <DefaultCard></DefaultCard>
+        </div>
       </div>
 
 
