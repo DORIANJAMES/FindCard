@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-5">
-    <component :is="activeComponent"></component>
+    <component :is="activeComponent" @componentInfo="componentInfo"></component>
+    {{activeComponent}}
   </div>
 </template>
 <script>
@@ -15,11 +16,25 @@ export default {
     return{
       activeComponent:'GameCards',
     }
-  }
+  },
+  methods:{
+    componentInfo(data){
+      if(data){
+        this.activeComponent = "Celebrate";
+      }else{
+        this.activeComponent = "Failure";
+      }
+    }
+  },
+
 }
 </script>
 <style>
 body{
   font-family: sans-serif;
+}
+
+.component-change{
+
 }
 </style>

@@ -25,7 +25,21 @@ export default {
   },
   methods: {
     showCard(card) {
-      this.activeCard = card.component;
+
+      if (this.selectedCard != null) {
+        this.activeCard = card.component;
+
+        setTimeout(() => {
+          if (this.selectedCard === this.answer.id) {
+            this.$emit("componentInfo", true);
+          } else {
+            this.$emit("componentInfo", false);
+          }
+        }, 2000);
+
+      } else {
+        alert("Lütfen bir kart seçiniz.");
+      }
     }
   }
 }
@@ -93,7 +107,6 @@ export default {
   transition: box-shadow .5s;
 }
 
-
 /************************** Açık kartların animasyonları için gerekli olan trasition class tnımları **************************/
 .rotate-all-enter {
 
@@ -122,17 +135,20 @@ export default {
 
 /************************** Kapalı kartınanimasyonları için gerekli olan trasition class tnımları **************************/
 
-.rotate-enter{
+.rotate-enter {
 
 }
-.rotate-enter-active{
-  animation: rotate-in ease-in-out 1s forwards;
+
+.rotate-enter-active {
+  animation: rotate-in ease-in-out .5s forwards;
 }
-.rotate-leave{
+
+.rotate-leave {
 
 }
-.rotate-leave-active{
-  animation: rotate-out ease-in-out 1s forwards;
+
+.rotate-leave-active {
+  animation: rotate-out ease-in-out .5s forwards;
 }
 
 @keyframes rotate-in {
