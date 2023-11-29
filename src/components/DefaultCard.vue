@@ -1,5 +1,8 @@
 <script>
-
+export default{
+  name:"DefaultCard",
+  props:['card'],
+}
 </script>
 
 <template>
