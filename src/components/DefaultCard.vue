@@ -1,12 +1,12 @@
 <script>
 export default{
   name:"DefaultCard",
-  props:['card'],
 }
 </script>
 
 <template>
-  <div class="card"></div>
+  <div class="card">
+  </div>
 </template>
 
 <style scoped>

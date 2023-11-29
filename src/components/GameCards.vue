@@ -9,6 +9,7 @@ export default {
     return {
       selectedCard: null,
       answer: {},
+      activeCard: "DefaultCard",
       cards: [
         {id: 1, component: "Card", image: "/src/assets/card-1.jpg"},
         {id: 2, component: "Card", image: "/src/assets/card-2.jpg"},
@@ -21,6 +22,11 @@ export default {
   created() {
     let answer = Math.ceil(Math.random() * this.cards.length);
     this.answer = this.cards[answer - 1];
+  },
+  methods: {
+    showCard(card) {
+      this.activeCard = card.component;
+    }
   }
 }
 </script>
@@ -44,7 +50,9 @@ export default {
           </transition-group>
         </div>
         <div class="container">
-          <DefaultCard :card="answer"></DefaultCard>
+          <transition name="rotate" mode="out-in">
+            <component :is="activeCard" @click.native="showCard(answer)" :cardImage="answer"></component>
+          </transition>
         </div>
       </div>
 
@@ -86,28 +94,62 @@ export default {
 }
 
 
-/***************************** Açık kartların animasyonları için gerekli olan trasition class tnımları *****************************/
-.rotate-all-enter{
+/************************** Açık kartların animasyonları için gerekli olan trasition class tnımları **************************/
+.rotate-all-enter {
 
 }
-.rotate-all-enter-active{
+
+.rotate-all-enter-active {
   animation: rotate-all ease-in-out 2s forwards;
 }
-.rotate-all-leave{
+
+.rotate-all-leave {
 
 }
-.rotate-all-leave-active{
+
+.rotate-all-leave-active {
 
 }
 
 @keyframes rotate-all {
-  from{
-  transform: rotateY(0);
+  from {
+    transform: rotateY(0);
   }
-  to{
+  to {
     transform: rotateY(1080deg);
   }
 }
 
+/************************** Kapalı kartınanimasyonları için gerekli olan trasition class tnımları **************************/
 
+.rotate-enter{
+
+}
+.rotate-enter-active{
+  animation: rotate-in ease-in-out 1s forwards;
+}
+.rotate-leave{
+
+}
+.rotate-leave-active{
+  animation: rotate-out ease-in-out 1s forwards;
+}
+
+@keyframes rotate-in {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes rotate-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
+}
 </style>
