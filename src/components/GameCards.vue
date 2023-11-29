@@ -4,7 +4,19 @@ import DefaultCard from "./DefaultCard.vue"
 
 export default {
   name: 'GameCards',
-  components: {Card, DefaultCard}
+  components: {Card, DefaultCard},
+  data(){
+    return{
+      cards: [
+        {id:1, component:"Card", image:"/src/assets/card-1.jpg"},
+        {id:2, component:"Card", image:"/src/assets/card-2.jpg"},
+        {id:3, component:"Card", image:"/src/assets/card-3.jpg"},
+        {id:4, component:"Card", image:"/src/assets/card-4.jpg"},
+        {id:5, component:"Card", image:"/src/assets/card-5.jpg"},
+
+      ]
+    }
+  }
 }
 </script>
 
@@ -16,7 +28,7 @@ export default {
         <h1 class="title">DUMAN <span>Nerede</span> <strong>?</strong></h1>
         <h4 class="description">Açık arktlardan birini seçtikten sonra, kapalı olan karta tıklayınız.</h4>
         <div class="container">
-          <Card v-for="card in 5"></Card>
+          <Card v-for="(card) in cards" :cardImage="card" :key="card.id"></Card>
         </div>
         <div class="container">
           <DefaultCard></DefaultCard>

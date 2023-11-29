@@ -1,15 +1,18 @@
-<script setup>
-
+<script>
+export default {
+  name: "Card",
+  props: ['cardImage'],
+}
 </script>
 
 <template>
   <div class="card">
-    <img src="../assets/card-1.jpg" alt="">
+    <img :src="cardImage.image" alt="">
   </div>
 </template>
 
 <style scoped>
-.card{
+.card {
   width: 200px;
   height: 232px;
   border-radius: 5px;
@@ -18,16 +21,18 @@
   transition: box-shadow .5s;
   margin-left: 15px;
 }
-.card:first-child{
+
+.card:first-child {
   margin: 0px;
 }
-.card:hover{
+
+.card:hover {
   box-shadow: 0px 5px 30px #666;
   transition: box-shadow .5s;
 }
-.card img{
+
+.card img {
   width: 100%;
   height: 100%;
 }
-
 </style>
