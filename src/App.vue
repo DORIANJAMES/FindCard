@@ -1,8 +1,9 @@
 <template>
   <div class="container mt-5">
-    <transition name="slideContainer" mode="out-in">
-      <component :is="activeComponent" @componentInfo="changeComponent($event)"></component>
-    </transition>
+    <transition-group name="slideContainer" mode="out-in">
+      <component key="mainComponent" :is="activeComponent" @componentInfo="changeComponent($event)"></component>
+      <canvas v-show="activeComponent=='Celebrate'" id="canvas" key="canvas"></canvas>
+    </transition-group>
   </div>
 </template>
 <script>
@@ -24,7 +25,6 @@ export default {
       this.activeComponent = componentName;
     }
   }
-
 }
 </script>
 <style>
