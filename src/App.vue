@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <component :is="activeComponent" @componentInfo="componentInfo"></component>
+    <component :is="activeComponent" @componentInfo="changeComponent($event)"></component>
   </div>
 </template>
 <script>
@@ -17,23 +17,16 @@ export default {
     }
   },
   methods:{
-    componentInfo(data){
-      if(data){
-        this.activeComponent = "Celebrate";
-      }else{
-        this.activeComponent = "Failure";
-      }
+    changeComponent(componentName){
+      console.log(componentName);
+      this.activeComponent = componentName;
     }
-  },
+  }
 
 }
 </script>
 <style>
 body{
   font-family: sans-serif;
-}
-
-.component-change{
-
 }
 </style>

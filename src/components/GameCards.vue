@@ -31,9 +31,9 @@ export default {
 
         setTimeout(() => {
           if (this.selectedCard === this.answer.id) {
-            this.$emit("componentInfo", true);
+            this.$emit("componentInfo", 'Celebrate');
           } else {
-            this.$emit("componentInfo", false);
+            this.$emit("componentInfo", 'Failure');
           }
         }, 2000);
 
