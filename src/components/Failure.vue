@@ -34,6 +34,7 @@ export default {
 .container h1 {
   color: white;
   font-size: 3rem;
+  text-align: center;
 }
 
 .container button {

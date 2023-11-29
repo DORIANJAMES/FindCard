@@ -1,7 +1,6 @@
 <template>
   <div class="container mt-5">
     <component :is="activeComponent" @componentInfo="componentInfo"></component>
-    {{activeComponent}}
   </div>
 </template>
 <script>
